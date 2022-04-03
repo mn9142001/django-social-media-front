@@ -8,7 +8,7 @@ const PostTop = (props) => {
         <div className="flex flex-row">
             <div className="flex-row flex">
                 <div>
-                    <img src={`http://192.168.1.9:5000${post.author.avatar}`} alt="" className="rounded-full w-12 h-12" />
+                    <img src={`https://django-social-media-back.herokuapp.com${post.author.avatar}`} alt="" className="rounded-full w-12 h-12" />
                 </div>
                 <div className="flex flex-col">
                     <div className="ml-2">
@@ -34,7 +34,7 @@ const PostTop = (props) => {
         {postFile && !props.Toshare ? <div className="flex-col flex min-w-full">
             <br></br>
             <div>
-                {postFile && ["jpg", "jpeg", "png", "webp", "gif"].some(ext => postFile.toLowerCase().endsWith(ext)) ? <img alt="" src={`http://192.168.1.9:5000${postFile}`} className="w-full h-96 rounded-md object-cover" /> : postFile && ["wembm", "mp4", "mov", "mkv"].some(ext => postFile.toLowerCase().endsWith(ext)) ? <video src={`http://192.168.1.9:5000${postFile}`} alt=""></video> : null}
+                {postFile && ["jpg", "jpeg", "png", "webp", "gif"].some(ext => postFile.toLowerCase().endsWith(ext)) ? <img alt="" src={`https://django-social-media-back.herokuapp.com${postFile}`} className="w-full h-96 rounded-md object-cover" /> : postFile && ["wembm", "mp4", "mov", "mkv"].some(ext => postFile.toLowerCase().endsWith(ext)) ? <video src={`https://django-social-media-back.herokuapp.com${postFile}`} alt=""></video> : null}
             </div><br></br>
             <div className="flex justify-center">
                 {post.media.map((file, key) => {

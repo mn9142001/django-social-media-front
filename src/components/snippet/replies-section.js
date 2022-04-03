@@ -13,7 +13,7 @@ const ReplySection = (props) => {
     const token = Cookies.get('access')
     const [replies, setReplies] = useState()
     useEffect(() => {
-        fetch(`http://192.168.1.9:5000/replies/${props.commentID}`, {
+        fetch(`https://django-social-media-back.herokuapp.com/replies/${props.commentID}`, {
             method : 'GET',
             headers: {
                 Authorization : `Bearer ${token}`
@@ -37,9 +37,9 @@ const ReplySection = (props) => {
         const formData = new FormData()
         formData.append('content', content)
         formData.append('commentID', props.commentID)
-        if (media) {formData.append('media', media[0])}
+        if (media) formData.append('media', media[0], `img_.${media[0].name.split('.')[1]}`)
         console.log(media)
-        axios.post('http://192.168.1.9:5000/comments/', formData, {
+        axios.post('https://django-social-media-back.herokuapp.com/comments/', formData, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': `multipart/form-data`

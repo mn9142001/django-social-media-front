@@ -14,9 +14,6 @@ const _HomePage = ({ token }) => {
     const [postToShare, setPostToShare] = useState(false)
     let fetching = false
 
-    useEffect(() => {
-        console.log(postToShare)
-    }, [postToShare])
 
     useEffect(() => {
         let lengtth = posts ? posts.length : null
@@ -30,7 +27,7 @@ const _HomePage = ({ token }) => {
 
             if (percent > 85 && fetching === false && lengtth) {
                 fetching = true
-                fetch(`http://192.168.1.9:5000/posts/${posts.length}`, {
+                fetch(`https://django-social-media-back.herokuapp.com/posts/${posts.length}`, {
                     method: 'get',
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -55,7 +52,7 @@ const _HomePage = ({ token }) => {
 
     useEffect(() => {
         document.getElementById('postsContainer').style.marginTop = `44px`
-        fetch('http://192.168.1.9:5000/posts', {
+        fetch('https://django-social-media-back.herokuapp.com/posts', {
             method: 'get',
             headers: {
                 Authorization: `Bearer ${token}`

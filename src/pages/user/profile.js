@@ -26,7 +26,7 @@ const _Profile = ({profile, token}) => {
     
             if (percent > 85 && fetching === false && lengtth) {
                 fetching = true
-                fetch(`http://192.168.1.9:5000/posts/${posts.length}`, {
+                fetch(`https://django-social-media-back.herokuapp.com/posts/${posts.length}`, {
                     method: 'get',
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -52,7 +52,7 @@ const _Profile = ({profile, token}) => {
     const ChangeFollowing = () => {
         const formData = new FormData()
         formData.append('userID', profile.id)
-        axios.post(`http://192.168.1.9:5000/users/profiles/`, formData, {
+        axios.post(`https://django-social-media-back.herokuapp.com/users/profiles/`, formData, {
             headers : {
                 Authorization : `Bearer ${token}`
             }
@@ -67,8 +67,8 @@ const _Profile = ({profile, token}) => {
         <br></br>
         <div className=" bg-gray-800 pb-2 flex-col flex w-4/5 rounded-lg items-center">
             <div className="relative w-full">
-            <img alt="" src = {`http://192.168.1.9:5000${profile.cover}`} className="z-1 w-full h-full rounded-lg" />
-                <img alt="" src = {`http://192.168.1.9:5000${profile.avatar}`} className="absolute left-0 bottom-0 border-4 border-white rounded-full w-24 h-24" />
+            <img alt="" src = {`https://django-social-media-back.herokuapp.com${profile.cover}`} className="z-1 w-full h-full rounded-lg" />
+                <img alt="" src = {`https://django-social-media-back.herokuapp.com${profile.avatar}`} className="absolute left-0 bottom-0 border-4 border-white rounded-full w-24 h-24" />
             </div>
             <div className="flex flex-col items-center">
                 <h1 className="text-2xl font-bold">{profile.name}</h1>
@@ -128,7 +128,7 @@ const ProfilePage = (props) => {
     const [profile, setProfile] = useState()
     useEffect(() => {
         if (!token) return () => {}
-        fetch(`http://192.168.1.9:5000/users/profiles/${params.id}`, {
+        fetch(`https://django-social-media-back.herokuapp.com/users/profiles/${params.id}`, {
             method : 'GET',
             headers : {
                 Authorization: `Bearer ${token}`

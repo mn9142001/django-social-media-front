@@ -13,7 +13,7 @@ const CommentsSection = (props) => {
     const mediaInput = useRef()
 
     useEffect(() => {
-        fetch(`http://192.168.1.9:5000/comments/${props.postID}`, {
+        fetch(`https://django-social-media-back.herokuapp.com/comments/${props.postID}`, {
             method : 'GET',
             headers: {
                 Authorization : `Bearer ${token}`
@@ -36,13 +36,12 @@ const CommentsSection = (props) => {
         if (!content && !media ) {
             return alert("you can't comment an empty snippet")
         }
-
         const formData = new FormData()
         formData.append('content', content)
         formData.append('postID', props.postID)
-        if (media) formData.append('media', media[0])
-        console.log(media)
-        axios.post('http://192.168.1.9:5000/comments/', formData, {
+        if (media) formData.append('media', media[0], `img_.${media[0].name.split('.')[1]}`)
+        console.log('img_.' + media[0].name.split('.')[1])
+        axios.post('https://django-social-media-back.herokuapp.com/comments/', formData, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': `multipart/form-data`

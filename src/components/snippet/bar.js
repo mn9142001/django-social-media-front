@@ -9,7 +9,9 @@ const GlobalBar = (props) => {
     const _notifies = Cookies.get('notifies')
     const [notifies, updateNotifies] = useState(_notifies ? JSON.parse(_notifies) : [])
     useEffect(() => {
-        const socket = new WebSocket(`ws://192.168.1.9:5000/notifies/token=${props.token}`)
+        let token = Cookies.get('access')
+        if (!token) return
+        const socket = new WebSocket(`wss://django-social-media-back.herokuapp.com/notifies/token=${token}`)
         socket.onmessage = (e) => {
             const data = JSON.parse(e.data)
             console.log(data)
@@ -27,7 +29,7 @@ const GlobalBar = (props) => {
             <h3 className="flex items-center text-white"><a href="/">Egy-App</a></h3>
         </div>
         <div className="flex w-2/5 sm:flex-none sm:w-1/5 justify-around">
-            <div className="items-center min-h-full flex justify-center relative"><img src={`http://192.168.1.9:5000${Cookies.get('avatar')}`} className="ml-2 rounded-full w-7 h-7" /></div>
+            <div className="items-center min-h-full flex justify-center relative"><a href={`https://django-social-media-back.herokuapp.com/profile/${Cookies.get('id')}`}><img src={`https://django-social-media-back.herokuapp.com${Cookies.get('avatar')}`} className="ml-2 rounded-full w-7 h-7" /></a></div>
 
             <div>
                 <button className="items-center min-h-full flex justify-center relative">
@@ -57,7 +59,7 @@ const GlobalBar = (props) => {
             {notifies && notifies.length > 0 ? notifies.map((notify, key) => {
                 return <div key={`notifications_${notify.id}`}>
                     <h3>{notify.sender.name}</h3>
-                    <img src={`http://192.168.1.9:5000${notify.sender.avatar}`} className="ml-2 rounded-full w-7 h-7" />
+                    <img src={`https://django-social-media-back.herokuapp.com${notify.sender.avatar}`} className="ml-2 rounded-full w-7 h-7" />
                 </div>
             }) : null}
         </div> */}

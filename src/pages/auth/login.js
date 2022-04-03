@@ -46,7 +46,7 @@ const _LoginPage = () => {
                 autoDismiss: true,
             })
         }
-        fetch('http://192.168.1.9:5000/login/', {
+        fetch('https://django-social-media-back.herokuapp.com/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

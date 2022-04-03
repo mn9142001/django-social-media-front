@@ -18,7 +18,7 @@ const Comment = (props) => {
         formData.append('snippetID', comment.id)
         formData.append('_snippet', 2)
         formData.append('_react', 2)
-        axios.post('http://192.168.1.9:5000/snippet/react/', formData, {
+        axios.post('https://django-social-media-back.herokuapp.com/snippet/react/', formData, {
             headers: {
                 Authorization: `Bearer ${Cookies.get('access')}`
             }
@@ -33,7 +33,7 @@ const Comment = (props) => {
     return <div className="flex-col w-full sm:w-1/2 mt-5 items-start">
         <div key={comment.id} className="flex w-full mt-5 items-start">
             <div>
-                <img src={`http://192.168.1.9:5000${comment.author.avatar}`} className="w-10 h-10 rounded-full" />
+                <img src={`https://django-social-media-back.herokuapp.com${comment.author.avatar}`} className="w-10 h-10 rounded-full" />
             </div>
             <div className="flex flex-col justify-center ml-2">
                 <div className="flex flex-col justify-between p-2 rounded-lg bg-gray-700">
@@ -44,7 +44,7 @@ const Comment = (props) => {
                         </p>
                     </div>
                     {comment.media && comment.media.length > 0 ? <div>
-                        {CommentFile && ["jpg", "jpeg", "png", "webp", "gif"].some(ext => CommentFile.toLowerCase().endsWith(ext)) ? <img alt="" src={`http://192.168.1.9:5000${CommentFile}`} className="w-full h-32 rounded-md object-fill" /> : CommentFile && ["wembm", "mp4", "mov", "mkv"].some(ext => CommentFile.toLowerCase().endsWith(ext))  ? <video src={`http://192.168.1.9:5000${CommentFile}`} className="w-32 h-32 rounded-md object-fill" alt=""></video> : null}
+                        {CommentFile && ["jpg", "jpeg", "png", "webp", "gif"].some(ext => CommentFile.toLowerCase().endsWith(ext)) ? <img alt="" src={`https://django-social-media-back.herokuapp.com${CommentFile}`} className="w-full h-32 rounded-md object-fill" /> : CommentFile && ["wembm", "mp4", "mov", "mkv"].some(ext => CommentFile.toLowerCase().endsWith(ext))  ? <video src={`https://django-social-media-back.herokuapp.com${CommentFile}`} className="w-32 h-32 rounded-md object-fill" alt=""></video> : null}
                     </div> : null}
                 </div>
                 <div className="flex justify-around">

@@ -47,7 +47,7 @@ const _SignUp = (props) => {
         for (let [key, value] of Object.entries(data)) {
             _data[key.toLowerCase()] = data[key]
         }
-        axios.post('http://192.168.1.9:5000/users/', _data, {
+        axios.post('https://django-social-media-back.herokuapp.com/users/', _data, {
             method : 'POST'
         }).then((res) => {
             if(res.data.error)

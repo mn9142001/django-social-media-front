@@ -31,7 +31,7 @@ const PostSnippet = (props) => {
             }
         }
 
-        // fetch('http://192.168.1.9:5000/posts/', {
+        // fetch('https://django-social-media-back.herokuapp.com/posts/', {
         //     method: 'POST',
         //     headers: {
         //         'Authorization': `Bearer ${token}`,
@@ -50,7 +50,7 @@ const PostSnippet = (props) => {
         //     }
         // })
 
-        axios.post('http://192.168.1.9:5000/posts/', formData, {
+        axios.post('https://django-social-media-back.herokuapp.com/posts/', formData, {
             headers: {
                 Authorization: `Bearer ${props.token}`,
                 'Content-Type': `multipart/form-data`
@@ -87,7 +87,7 @@ const PostSnippet = (props) => {
                             <div className="flex flex-row">
                                 <div className="flex-row flex">
                                     <div>
-                                        <img src={`http://192.168.1.9:5000${props.postToShare.author.avatar}`} alt="" className="rounded-full w-12 h-12" />
+                                        <img src={`https://django-social-media-back.herokuapp.com${props.postToShare.author.avatar}`} alt="" className="rounded-full w-12 h-12" />
                                     </div>
                                     <div className="flex flex-col">
                                         <div className="ml-2">
